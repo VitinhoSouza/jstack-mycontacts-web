@@ -5,11 +5,14 @@ import edit from "../../assets/images/icons/edit.svg";
 import trash from "../../assets/images/icons/trash.svg";
 
 import { Card, Container, Header, ListContainer, InputSearchContainer } from "./styles";
+import Modal from "../../components/Modal";
 
 export default function Home() {
 
   return (
     <Container>
+
+      <Modal danger />
 
       <InputSearchContainer>
         <input type='text' placeholder='Pesquise pelo nome...' />
