@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   margin-top: 32px;
@@ -31,23 +31,28 @@ export const Header = styled.header`
   }
 `
 
-export const ListContainer = styled.div`
+export const ListHeader = styled.header`
   margin-top: 24px;
+  margin-bottom: 8px;
 
-  header {
-    margin-bottom: 8px;
+  button {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
 
-    button {
-      background: transparent;
-      border: none;
-      display: flex;
-      align-items: center;
+    span {
+      color: ${({ theme }) => theme.colors.primary.main};
+      margin-right: 8px;
+      font-weight: bold;
+    }
 
-      span {
-        color: ${({ theme }) => theme.colors.primary.main};
-        margin-right: 8px;
-        font-weight: bold;
-      }
+    img {
+      margin-right: 8px;
+      ${({ orderBy }) => orderBy === 'asc' && css`
+        transform: rotate(180deg);
+      `}
+      transition: transform 0.2s ease-in;
     }
   }
 `
