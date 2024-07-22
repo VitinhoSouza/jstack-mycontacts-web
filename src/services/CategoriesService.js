@@ -6,7 +6,7 @@ class CategoriesService {
     this.httpClient = new HttpClient('http://localhost:8000');
   }
 
-  async listCategories() {
+  listCategories() {
     return this.httpClient.get('/categories');
   }
 }
