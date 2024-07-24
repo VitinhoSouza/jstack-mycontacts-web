@@ -15,25 +15,30 @@ export default function EditContact() {
 
   const { id } = useParams();
   const history = useHistory();
+  const safeAsyncAction = useSafeAsyncAction();
 
   useEffect(() => {
     async function loadContact() {
       try {
         const contactData = await ContactsService.getContactById(id);
-        contactFormRef.current.setFieldsValues(contactData);
-        setContactName(contactData.name);
-        setIsLoading(false);
-      } catch {
-        history.push('/');
-        toast({
-          type: 'danger',
-          text: 'Contato não encontrado!',
+        safeAsyncAction(() => {
+          contactFormRef.current.setFieldsValues(contactData);
+          setContactName(contactData.name);
+          setIsLoading(false);
         });
+      } catch {
+        safeAsyncAction(() => {
+          history.push('/');
+          toast({
+            type: 'danger',
+            text: 'Contato não encontrado!',
+          });
+        })
       }
     }
 
     loadContact();
-  }, [id, history])
+  }, [id, history, safeAsyncAction]);
 
   async function handleSubmit(formData) {
     try {
