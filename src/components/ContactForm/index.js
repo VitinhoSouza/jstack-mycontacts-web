@@ -24,7 +24,8 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
     isLoadingCategories,
     categoryId,
     categories,
-    isFormValid
+    isFormValid,
+    setCategoryId
   } = useContactForm(onSubmit, ref);
 
   return (

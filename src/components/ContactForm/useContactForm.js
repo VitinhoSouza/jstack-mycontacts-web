@@ -91,7 +91,8 @@ export default function useContactForm(onSubmit, ref) {
     isLoadingCategories,
     categoryId,
     categories,
-    isFormValid
+    isFormValid,
+    setCategoryId
   }
 
 }
