@@ -1,6 +1,7 @@
 
 import PropTypes from 'prop-types';
 
+import useAnimatedUnmount from '../../hooks/useAnimatedUnmount';
 import Spinner from '../Spinner';
 import ReactPortal from '../ReactPortal';
 
@@ -8,11 +9,13 @@ import { Overlay } from "./styles";
 
 export default function Loader({ isLoading }) {
 
-  if (!isLoading) return null;
+  const { shouldRender, animatedElementRef } = useAnimatedUnmount(isLoading);
+
+  if (!shouldRender) return null;
 
   return (
     <ReactPortal containerId={'loader-root'}>
-      <Overlay>
+      <Overlay ref={animatedElementRef} isLeaving={!isLoading}>
         <Spinner size={90} />
       </Overlay>
     </ReactPortal>
