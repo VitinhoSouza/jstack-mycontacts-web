@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import xCircleIcon from '../../../assets/images/icons/x-circle.svg';
@@ -6,7 +6,7 @@ import checkCircleIcon from '../../../assets/images/icons/check-circle.svg';
 
 import { Container } from "./styles";
 
-export default function ToastMessage({ message, onRemoveMessage, isLeaving, animatedRef }) {
+function ToastMessage({ message, onRemoveMessage, isLeaving, animatedRef }) {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -51,3 +51,5 @@ ToastMessage.propTypes = {
   isLeaving: PropTypes.bool.isRequired,
   animatedRef: PropTypes.shape({}).isRequired,
 }
+
+export default memo(ToastMessage);
