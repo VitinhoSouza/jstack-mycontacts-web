@@ -7,15 +7,15 @@ import { Container, Overlay, Footer } from './styles';
 import useAnimatedUnmount from '../../hooks/useAnimatedUnmount';
 
 export default function Modal({
-  danger,
+  danger = false,
   title,
   children,
-  cancelLabel,
-  confirmLabel,
+  cancelLabel = 'Cancelar',
+  confirmLabel = 'Confirmar',
   onCancel,
   onConfirm,
   visible,
-  isLoading
+  isLoading = false,
 }) {
 
   const { shouldRender, animatedElementRef } = useAnimatedUnmount(visible);
@@ -63,11 +63,4 @@ Modal.propTypes = {
   confirmLabel: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
-}
-
-Modal.defaultProps = {
-  danger: false,
-  cancelLabel: 'Cancelar',
-  confirmLabel: 'Confirmar',
-  isLoading: false,
 }
