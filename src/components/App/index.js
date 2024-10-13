@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import Header from '../Header';
-import Routes from '../../Routes';
+import Router from '../../Router';
 import ToastContainer from '../Toast/ToastContainer';
 
 import GlobalStyles from '../../assets/styles/global';
@@ -19,7 +19,7 @@ function App() {
         <ToastContainer />
         <Container>
           <Header />
-          <Routes />
+          <Router />
         </Container>
       </ThemeProvider>
     </BrowserRouter>
